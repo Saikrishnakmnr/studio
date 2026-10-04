@@ -1,0 +1,1 @@
+window.RG_CONFIG={BRAND:'RacharlaGPT',APP_NAME:'RacharlaGPT Digital Market',SUPABASE_URL:'',SUPABASE_ANON_KEY:'',RAZORPAY_KEY_ID:'',SONGS_URL:'https://songs.racharlagpt.in',NAVABHARAT_URL:'https://navabharatai.racharlagpt.in',BUSINESS_EMAIL:'hello@racharlagpt.in',GA4_MEASUREMENT_ID:'',MONETAG_ZONE_ID:''};
