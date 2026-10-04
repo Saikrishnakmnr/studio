@@ -1,0 +1,4 @@
+import {serve} from 'https://deno.land/std@0.224.0/http/server.ts';
+import Razorpay from 'npm:razorpay@2.9.6';
+const cors={"Access-Control-Allow-Origin":"*","Access-Control-Allow-Headers":"authorization,apikey,content-type","Access-Control-Allow-Methods":"POST,OPTIONS"};
+serve(async req=>{if(req.method==='OPTIONS')return new Response('ok',{headers:cors});try{const x=await req.json();const r=new Razorpay({key_id:Deno.env.get('RAZORPAY_KEY_ID')!,key_secret:Deno.env.get('RAZORPAY_KEY_SECRET')!});const code='RGP-'+Date.now().toString(36).toUpperCase();const o=await r.orders.create({amount:Number(x.amount)*100,currency:'INR',receipt:code,notes:{product:x.productSlug}});return new Response(JSON.stringify({orderCode:code,razorpayOrderId:o.id,keyId:Deno.env.get('RAZORPAY_KEY_ID')}),{headers:{...cors,'Content-Type':'application/json'}})}catch(e){return new Response(JSON.stringify({error:e.message}),{status:400,headers:{...cors,'Content-Type':'application/json'}})}});
